@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 # Install minikube dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
