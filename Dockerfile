@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:jessie
 
 # Install minikube dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
@@ -11,7 +11,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
   socat \
   git \
   nfs-common \
-  net-tools \
   glusterfs-client \
   cifs-utils \
   apt-transport-https \
@@ -55,10 +54,6 @@ EXPOSE 8443
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/linux/amd64/kubectl && \
   chmod a+x kubectl && \
   mv kubectl /usr/local/bin
-
-# Install VsdnEmul
-RUN \
-git clone https://github.com/fernnf/vsdnemul
 
 # Copy local start.sh
 COPY start.sh /start.sh
