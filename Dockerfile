@@ -15,6 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
   cifs-utils \
   apt-transport-https \
   ca-certificates \
+  openvswitch-switch \
+  python3-pip \
   curl \
   gnupg2 \
   software-properties-common \
@@ -49,6 +51,10 @@ ENV CHANGE_MINIKUBE_NONE_USER=true
 # what it wants to know: localkube isn't started yet.
 COPY fake-systemctl.sh /usr/local/bin/systemctl
 EXPOSE 8443
+
+# Install VsdnEmul
+RUN \
+git clone https://github.com/fernnf/vsdnemul
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/linux/amd64/kubectl && \
