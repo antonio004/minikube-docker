@@ -15,8 +15,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
   cifs-utils \
   apt-transport-https \
   ca-certificates \
-  openvswitch-switch \
-  python3-pip \
   curl \
   gnupg2 \
   software-properties-common \
