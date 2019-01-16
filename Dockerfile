@@ -27,6 +27,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
   && DEBIAN_FRONTEND=noninteractive apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install VsdnEmul
+RUN \
+git clone https://github.com/fernnf/vsdnemul
+
 # Install docker
 RUN \
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
@@ -51,10 +55,6 @@ ENV CHANGE_MINIKUBE_NONE_USER=true
 # what it wants to know: localkube isn't started yet.
 COPY fake-systemctl.sh /usr/local/bin/systemctl
 EXPOSE 8443
-
-# Install VsdnEmul
-RUN \
-git clone https://github.com/fernnf/vsdnemul
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/linux/amd64/kubectl && \
