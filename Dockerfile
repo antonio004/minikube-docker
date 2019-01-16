@@ -27,10 +27,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && \
   && DEBIAN_FRONTEND=noninteractive apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install VsdnEmul
-RUN \
-git clone https://github.com/fernnf/vsdnemul
-
 # Install docker
 RUN \
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
